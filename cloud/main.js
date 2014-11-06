@@ -11,13 +11,6 @@ if (typeof Number.prototype.toDegrees == 'undefined') {
     Number.prototype.toDegrees = function() { return this * 180 / Math.PI; };
 }
 
-
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("hello", function(request, response) {
-  response.success("Hello world!");
-});
-
 /**
  * GET messages
  * Available params:

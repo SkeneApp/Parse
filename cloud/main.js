@@ -88,7 +88,7 @@ Parse.Cloud.define('map_data', function (req, res) {
 
   query.limit(count);
   query.descending('objectId');
-  query.select('latitude', 'longitude', 'createdAt');
+  query.select('latitude', 'longitude');
   query.find({
     success : function (results) {
       res.success(results);

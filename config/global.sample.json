@@ -1,0 +1,11 @@
+{
+  "applications": {
+    "Skene": {
+      "applicationId": "",
+      "masterKey": ""
+    },
+    "_default": {
+      "link": "Skene"
+    }
+  }
+}

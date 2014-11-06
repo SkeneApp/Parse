@@ -1,21 +1,54 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    <title>My ParseApp site</title>
+    <title>Skene app</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <style>
-    body { font-family: Helvetica, Arial, sans-serif; }
-    div { width: 800px; height: 400px; margin: 40px auto; padding: 20px; border: 2px solid #5298fc; }
-    h1 { font-size: 30px; margin: 0; }
-    p { margin: 40px 0; }
-    em { font-family: monospace; }
+    body { font-family: Helvetica, Arial, sans-serif; background-color: #fff; font-size: 100%; }
+    * { box-sizing: border-box; }
     a { color: #5298fc; text-decoration: none; }
+    .centered { width: 100%; max-width: 700px; margin: 2rem auto; }
+    header {
+      width: 100%;
+      height: 400px;
+      background-image: url("./skene_logo.jpg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+    .visible { opacity: 1; }
+    article { padding: 1rem 0; text-align: center; }
+    h1 { font-size: 2.5rem; }
+    .link { padding: 0 2rem; }
+    .link > a {
+      display: block;
+      width: 100%;
+      padding: 1rem 0;
+      text-align: center;
+      border: 2px solid #2ecc71;
+      color: #27ae60;
+      font-size: 1.1rem;
+      transition: background-color 0.3s;
+    }
+    .link > a:hover { background-color: #B3F2CE; }
     </style>
   </head>
   <body>
-    <div>
-      <h1>Congratulations! You're already hosting with Parse.</h1>
-      <p>To get started, edit this file at <em>public/index.html</em> and start adding static content.</p>
-      <p>If you want something a bit more dynamic, delete this file and check out <a href="https://parse.com/docs/hosting_guide#webapp">our hosting docs</a>.</p>
+    <div class='centered'>
+      <header id='header'></header>
+      <article>
+        <h1>Skene app</h1>
+        <div class='link'><a href='https://github.com/SkeneApp/Android/raw/master/app/skene-release.apk'>Download for Android</a></div>
+      </article>
     </div>
+
+    <script>
+    window.onload = function () {
+      document.querySelector('#header').className = 'visible';
+    };
+    </script>
   </body>
 </html>

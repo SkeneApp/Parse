@@ -76,14 +76,14 @@ Parse.Cloud.define('get', function (req, res) {
  *   count (default: 50): maximum number of messages to return
  */
 Parse.Cloud.define('map_data', function (req, res) {
-  var count = +req.params.count || 50;
+  var count = req.params.count || 50;
   var query = new Parse.Query('message');
 
-  query.greaterThanOrEqualTo('latitude', +req.params.min_lat);
-  query.lessThanOrEqualTo('latitude', +req.params.max_lat);
-  query.greaterThanOrEqualTo('longitude', +req.params.min_lon);
-  query.lessThanOrEqualTo('latitude', +req.params.max_lon);
-  query.equalTo('parentId', 0);
+  query.greaterThanOrEqualTo('latitude', req.params.min_lat);
+  query.lessThanOrEqualTo('latitude', req.params.max_lat);
+  query.greaterThanOrEqualTo('longitude', req.params.min_lon);
+  query.lessThanOrEqualTo('longitude', req.params.max_lon);
+  query.equalTo('parentId', '0');
 
   query.limit(count);
   query.descending('objectId');

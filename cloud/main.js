@@ -3,13 +3,13 @@
  */
 
 // Extend Number object with method to convert numeric degrees to radians
-if (typeof Number.prototype.toRadians == 'undefined') {
-    Number.prototype.toRadians = function() { return this * Math.PI / 180; };
-}
+Number.prototype.toRadians = function () {
+  return this * Math.PI / 180;
+};
 // Extend Number object with method to convert radians to numeric (signed) degrees
-if (typeof Number.prototype.toDegrees == 'undefined') {
-    Number.prototype.toDegrees = function() { return this * 180 / Math.PI; };
-}
+Number.prototype.toDegrees = function () {
+  return this * 180 / Math.PI;
+};
 
 /**
  * GET messages
@@ -24,15 +24,15 @@ if (typeof Number.prototype.toDegrees == 'undefined') {
 Parse.Cloud.define('get', function (req, res) {
   var query = new Parse.Query('message');
 
-  var rad = +req.params.radius;
-  var lat = +req.params.latitude;
-  var lon = +req.params.longitude;
+  var rad = req.params.radius;
+  var lat = req.params.latitude;
+  var lon = req.params.longitude;
   var p_id = req.params.parentId;
-  var count = +req.params.count || 50;
+  var count = req.params.count || 50;
   var R = 6371; // Earth's radius
   var edges = {};
 
-  if(rad & lat & lon) {
+  if(rad && lat && lon) {
     // Select by location
     rad /= 1000; // Convert to km
 
@@ -44,8 +44,9 @@ Parse.Cloud.define('get', function (req, res) {
     query.greaterThanOrEqualTo('latitude', edges.min_lat);
     query.lessThanOrEqualTo('latitude', edges.max_lat);
     query.greaterThanOrEqualTo('longitude', edges.min_lon);
-    query.lessThanOrEqualTo('latitude', edges.max_lon);
+    query.lessThanOrEqualTo('longitude', edges.max_lon);
 
+    query.equalTo('parentId', '0');
   } else if (p_id) {
     // Select by parent ID
     query.equalTo('parentId', p_id);

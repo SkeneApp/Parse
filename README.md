@@ -101,6 +101,8 @@ count | Number **default: 50**
 }
 ```
 
+----
+
 ### POST `https://api.parse.com/1/functions/map_data`
 
 #### Description
